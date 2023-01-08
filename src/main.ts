@@ -1,7 +1,7 @@
 import * as http from "http";
 import {exec} from "child_process";
 
-const port = 8000;
+const port = 8001;
 
 const server = http.createServer((_, res) => {
 
