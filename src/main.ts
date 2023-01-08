@@ -1,7 +1,6 @@
 import * as http from "http";
 import {exec} from "child_process";
 
-const host = 'localhost';
 const port = 8000;
 
 const server = http.createServer((_, res) => {
@@ -23,6 +22,6 @@ const server = http.createServer((_, res) => {
     res.end(`stdout:\n${stdout}`);
   });
 });
-server.listen(port, host, () => {
-  console.log(`Server is running on http://${host}:${port}`);
+server.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
