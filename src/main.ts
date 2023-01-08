@@ -22,7 +22,7 @@ const server = http.createServer((_, res) => {
     }
 
     res.writeHead(200);
-    res.end(`${stdout}`);
+    res.end(`Playing record player on Kitchen SONOS. ${stdout}`);
   });
 });
 server.listen(port, () => {
