@@ -4,22 +4,25 @@ import {exec} from "child_process";
 const port = 8001;
 
 const server = http.createServer((_, res) => {
+  console.log("Incoming connection")
 
-  exec('sudo python stream.py', (error, stdout, stderr) => {
+  const command = 'sudo service platenspeler restart';
+  // const command = "watch -t date"
+  exec(command, (error, stdout, stderr) => {
     if (error) {
       res.writeHead(500);
-      res.end(`error: ${error.message}`);
+      res.end(`ERROR: ${error.message}`);
       return;
     }
 
     if (stderr) {
       res.writeHead(500);
-      res.end(`stderr: ${stderr}`);
+      res.end(`STD_ERROR: ${stderr}`);
       return;
     }
 
     res.writeHead(200);
-    res.end(`stdout:\n${stdout}`);
+    res.end(`${stdout}`);
   });
 });
 server.listen(port, () => {
